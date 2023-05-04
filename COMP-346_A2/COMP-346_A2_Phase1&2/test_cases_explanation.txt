@@ -1,0 +1,59 @@
+phase 1 unsynchronized ouput:
+Terminating client receiving thread - Running time 318 milliseconds
+
+Terminating server thread1 -  Running time 324 milliseconds
+
+Terminating server thread2 -  Running time 340 milliseconds
+
+Terminating network thread: Client: disconnected Server: disconnected
+------------------------------------------------------------------------------
+
+phase 1 synchronized output:
+Terminating client receiving thread - Running time 444 milliseconds
+
+Terminating server thread1 -  Running time 451 milliseconds
+
+Terminating server thread2 -  Running time 451 milliseconds
+
+Terminating network thread: Client: disconnected Server: disconnected
+------------------------------------------------------------------------------
+
+Explanation: In our program we used synchronized statements because it provides better 
+performance than methods because you can lock only the critial section where as in synchronized
+methods, it locks the entire method. This improves the program of being efficient and better performance.
+------------------------------------------------------------------------------
+
+phase 2 semaphore output:
+Terminating client receiving thread - Running time 428 milliseconds
+
+Terminating server thread1 -  Running time 435 milliseconds
+
+Terminating server thread2 -  Running time 435 milliseconds
+
+Terminating network thread: Client: disconnected Server: disconnected
+------------------------------------------------------------------------------
+
+Explanation: We added six semaphores, sending, receiving, transferIn, transferOut and
+two mutex, mutexIn and mutexOut. Each method having 2 semaphores making sure it only operates
+when there is buffer inside. The mutex will help us be more efficient and will lock it so 2 threads
+cannot be accessed at the same time. Adding semaphores is more efficient because semaphores can 
+be used to implement more complex synchronization patterns and it is far more flexible to 
+control what resources can be accessed and what can be locked comparing to synchronization statements.
+------------------------------------------------------------------------------
+
+phase 2 three server threads output:
+Terminating client receiving thread - Running time 339 milliseconds
+
+Terminating server thread1 -  Running time 347 milliseconds
+
+Terminating server thread2 -  Running time 347 milliseconds
+
+Terminating server thread3 -  Running time 347 milliseconds
+
+Terminating network thread: Client: disconnected Server: disconnected
+------------------------------------------------------------------------------
+
+Explanation: When adding another thread to the server, the running time went down comparing
+to the 2 thread server with semaphores. This is because the tasks of processing all the data
+will be divided with 3 threads rather than 2 which makes it more effcient and can perform 
+multiple operations simultaneoulsy. 
